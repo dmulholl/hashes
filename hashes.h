@@ -32,7 +32,7 @@ static inline uint64_t hash_djb2_64(const uint8_t* string, size_t length) {
 static inline uint32_t hash_djb2_32_xor(const uint8_t* string, size_t length) {
     uint32_t hash = UINT32_C(5381);
 
-    // Function: hash(i) = hash(i - 1) * 33 + string[i]
+    // Function: hash(i) = (hash(i - 1) * 33) XOR string[i]
     for (size_t i = 0; i < length; i++) {
         hash = ((hash << 5) + hash) ^ string[i];
     }
@@ -44,7 +44,7 @@ static inline uint32_t hash_djb2_32_xor(const uint8_t* string, size_t length) {
 static inline uint64_t hash_djb2_64_xor(const uint8_t* string, size_t length) {
     uint64_t hash = UINT64_C(5381);
 
-    // Function: hash(i) = hash(i - 1) * 33 + string[i]
+    // Function: hash(i) = (hash(i - 1) * 33) XOR string[i]
     for (size_t i = 0; i < length; i++) {
         hash = ((hash << 5) + hash) ^ string[i];
     }
